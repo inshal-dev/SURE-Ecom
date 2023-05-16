@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
@@ -19,6 +19,7 @@ export class ProductDetailComponent {
   cart!:Subscription;
   cartDec!:Subscription;
   cartItem:any;
+  reload:boolean = false;
 
   productImages:Array<string> = [
     "../../../assets/assets/fossil.jpg",
@@ -31,9 +32,10 @@ export class ProductDetailComponent {
   ]
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private productService: ProductServiceService  
+    private productService: ProductServiceService 
   ){
-    this.getId = this._activatedRoute.snapshot.paramMap.get("id")
+  
+    this.getIdbyRoute()
     this.getProductByID()
     this.getCartList()
   }
@@ -45,9 +47,13 @@ export class ProductDetailComponent {
            if(element.product_id == this.getId ) return this.product = element;
         });
       }
-    ) 
-    
+    )  
   }
+
+ getIdbyRoute(){ 
+  this.getId = this._activatedRoute.snapshot.paramMap.get("id")
+ }
+
   getCartList(){
     this.cart = this.productService.getCartList().subscribe(
       res => {
@@ -70,6 +76,11 @@ export class ProductDetailComponent {
     this.cartDec = this.productService.deleteCartSpecificItem(id).subscribe(res => console.log(res));
     this.getProductByID()
     this.getCartList()
+  }
+ 
+  routeToID(id:any){
+    this.getId = id
+    this.getProductByID() 
   }
 
   ngOnDestory(){

@@ -21,6 +21,11 @@
 .btn-right{
     float: right;
 }
+#discount{
+    font-size: medium;
+    color: red;
+    margin-top: -10px;
+}
  
 .discount-section{
     background-color: rgb(255, 42, 0);
@@ -46,8 +51,14 @@
         width: 300px;
     }
  }
+ .btn-product-view{
+    width: 8rem; 
+ }
+#btn{
+    width: 8rem;
+}
 
- .btn-cart, .btn-increment, .btn-decrement{
+ .btn-group{
     border: 1px solid $card-background;
  }
  

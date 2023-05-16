@@ -1,0 +1,37 @@
+@import '../../styles.scss';
+
+.jumbotron{
+    margin: 100px auto;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.card-address{
+    width: 300px;
+    height: 160px;
+}
+
+.delete-cart-item{
+    margin: 80px auto;
+}
+
+.btn-bin{
+    margin-right: -13px; 
+    cursor: pointer;
+}
+
+.form-check-input{
+    cursor: pointer;  
+}
+ 
+.edit{
+    position: absolute;
+    bottom: 13px; 
+    text-decoration: none;
+
+}
+
+#icon-pen{
+    margin-bottom: 5px; 
+}

@@ -11,8 +11,8 @@ export class CartComponent {
  
    $cart!: Observable<any>;
   totalValue:number = 0;
-  sgst:number = 0;
-
+  discountAmount:number = 0;
+  discount:number = 0;
 
   constructor(
     private productService: ProductServiceService
@@ -36,17 +36,36 @@ export class CartComponent {
 
   getCartValue(event:any, items:any){  
     if(event.target.checked){
-      this.totalValue += items.productPrice * items.productQuantity   
+      this.totalValue += this.getDiscount(items) * items.productQuantity  
+      this.discountAmount += this.discount * items.productQuantity 
       return this.totalValue  
     }else{
-      this.totalValue -= items.productPrice * items.productQuantity
-      return this.totalValue
-    }
+      this.totalValue -= this.getDiscount(items) * items.productQuantity 
       
+      this.discountAmount -= this.discount * items.productQuantity
+      return this.totalValue
+    } 
   }
 
-  deleteCartItem(id:any){
-    this.productService.deleteCartItemFromList(id).subscribe((res)=> console.log(res))
+  getDiscount(item:any){
+   this.discount = item.productDiscount/ 100
+    this.discount = this.discount * item.productPrice  
+    let discountPrice = item.productPrice - this.discount 
+    
+    return discountPrice 
+  }
+
+  deleteCartItem(items:any){
+    this.productService.deleteCartItemFromList(items.product_id).subscribe((res)=> console.log(res))
     this.getCartLists()
+    if(items.product_id){
+      this.totalValue -= this.getDiscount(items) * items.productQuantity  
+      this.discountAmount -= this.discount * items.productQuantity
+      return this.totalValue
+    }else{
+      return this.totalValue = 0
+    }
+  
+    
   }
 }

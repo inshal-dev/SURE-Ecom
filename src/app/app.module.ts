@@ -13,6 +13,7 @@ import { ProductComponent } from './product-view/product/product.component';
 import { ProductDetailComponent } from './product-view/product-detail/product-detail.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { AddressSectionComponent } from './address-section/address-section.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     ProductComponent,
     ProductDetailComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AddressSectionComponent
   ],
   imports: [
     BrowserModule,

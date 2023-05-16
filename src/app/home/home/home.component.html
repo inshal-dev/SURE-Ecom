@@ -23,10 +23,10 @@
                               </svg>{{item.productPrice | number}}</h3>
                       <p class="card-text">{{item.productDescription}}</p> 
                       <div class="discount-section" *ngIf="item.productDiscount">
-                        <span>-{{item.productDiscount}}</span>
+                        <span>-{{item.productDiscount}}%</span>
                       </div>
                       
-                      <button class="btn btn-buy btn-right">Buy Now</button>
+                      <button class="btn btn-buy btn-right" [routerLink]="['/product-detail', item.product_id]">Buy Now</button>
                       <div class="btn-group btn-cart-inc" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-increment" (click)="addCart(item)"  *ngIf="cartItem[i]?.product_id === item?.product_id">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">

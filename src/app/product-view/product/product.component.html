@@ -24,7 +24,7 @@
                               </svg>{{item.productPrice | number}}</h3>
                       <p>{{item.productDescription}}</p> 
                       <div class="discount-section" *ngIf="item.productDiscount">
-                        <span>-{{item.productDiscount}}</span>
+                        <span>-{{item.productDiscount}}%</span>
                       </div>
                       <div class="btn-group btn-cart-inc" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-increment" (click)="addCart(item)"  *ngIf="cartItem[i]?.product_id === item?.product_id">
