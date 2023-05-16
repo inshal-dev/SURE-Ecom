@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+.text-section{
+    margin-top: 160px;
+    margin-left: 30px;
+}
+
+.cta-btn{
+    margin-top: 80px;
+    width: 250px;
+    height: 60px;
+    font-size: x-large;
+    border-radius: 30px;
+    color: $color;
+    background-color: $background-color-nav;
+}
+
+.display-1{
+    color: #ffffff;
+}

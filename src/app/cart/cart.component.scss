@@ -1,0 +1,26 @@
+@import '../../styles.scss';
+
+.jumbotron{
+    margin: 100px auto;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.btn-buy{ 
+    width: 595px; 
+    color: $color;
+    background-color: $card-background;
+}
+
+.delete-cart-item{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
+
+.btn-bin{
+    margin-right: -13px;
+    margin-top: 100px;
+    cursor: pointer;
+}
