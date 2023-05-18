@@ -32,7 +32,8 @@ export class ProductDetailComponent {
   ]
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private productService: ProductServiceService 
+    private productService: ProductServiceService,
+    private route: Router
   ){
   
     this.getIdbyRoute()
@@ -80,7 +81,32 @@ export class ProductDetailComponent {
  
   routeToID(id:any){
     this.getId = id
-    this.getProductByID() 
+    this.getProductByID()
+    // this.route.navigate(['product-detail'])
+    window.scroll(0,0)
+  }
+
+  buyNow(items:any){
+    console.log(this.cartItem);
+    let key;
+    for (let item of this.cartItem) {
+      if(item.product_id !== items.product_id){
+        key = true
+      }else{
+        console.log('false')
+      }
+    }
+
+    console.log(key);
+    if(key){
+      items.productQuantity = 1;
+      this.cartItem.push(items);
+      console.log(this.cartItem);
+      
+    }
+    
+    // this.productService.buyNowCartItemCheck(item).subscribe((res)=> console.log(res))
+ 
   }
 
   ngOnDestory(){

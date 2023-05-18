@@ -16,4 +16,10 @@ export class AddressService {
   getAddress():Observable<any>{
     return this.http.get(this.url + 'address');
   }
+  postAddress(item:any):Observable<any>{
+    return this.http.post(this.url + 'user-address', {item: item});
+  }
+  getCities(){
+    return this.http.get(this.url + 'cities');
+  }
 }

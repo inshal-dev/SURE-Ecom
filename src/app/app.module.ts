@@ -12,8 +12,10 @@ import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product-view/product/product.component';
 import { ProductDetailComponent } from './product-view/product-detail/product-detail.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddressSectionComponent } from './address-section/address-section.component';
+import { AddressService } from './services/address.service';
+import { ProductServiceService } from './services/product-service.service';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,13 @@ import { AddressSectionComponent } from './address-section/address-section.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AddressService,
+    ProductServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

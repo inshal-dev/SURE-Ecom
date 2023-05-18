@@ -30,4 +30,8 @@ export class ProductServiceService {
   deleteCartSpecificItem(id:any){
     return this.http.post(this.url + 'cart-remove-item', {product_id: id});
   }
+
+  buyNowCartItemCheck(item:any){
+    return this.http.post(this.url + 'buy-now', {item: item})
+  }
 }

@@ -58,7 +58,7 @@ export class CartComponent {
   deleteCartItem(items:any){
     this.productService.deleteCartItemFromList(items.product_id).subscribe((res)=> console.log(res))
     this.getCartLists()
-    if(items.product_id){
+    if(items.product_id && this.totalValue != 0){
       this.totalValue -= this.getDiscount(items) * items.productQuantity  
       this.discountAmount -= this.discount * items.productQuantity
       return this.totalValue
