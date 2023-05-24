@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,16 @@ export class AddressService {
   }
   getCities(){
     return this.http.get(this.url + 'cities');
+  }
+
+  deleteAddress(_id:any):any{
+    return this.http.post(this.url + 'remove-address', {id: _id})
+  }
+  editAddress(item:any){
+    return this.http.post(this.url + 'update-address', {item: item})
+  }
+  
+  userAddressList(data:any){
+    return this.http.post(this.url + 'cart-data', { addressData: data })
   }
 }

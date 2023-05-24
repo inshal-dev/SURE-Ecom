@@ -20,7 +20,7 @@ export class ProductDetailComponent {
   cartDec!:Subscription;
   cartItem:any;
   reload:boolean = false;
-
+  productCartList:any = [];
   productImages:Array<string> = [
     "../../../assets/assets/fossil.jpg",
     "../../../assets/assets/xyz1.jpg",
@@ -86,27 +86,8 @@ export class ProductDetailComponent {
     window.scroll(0,0)
   }
 
-  buyNow(items:any){
-    console.log(this.cartItem);
-    let key;
-    for (let item of this.cartItem) {
-      if(item.product_id !== items.product_id){
-        key = true
-      }else{
-        console.log('false')
-      }
-    }
-
-    console.log(key);
-    if(key){
-      items.productQuantity = 1;
-      this.cartItem.push(items);
-      console.log(this.cartItem);
-      
-    }
-    
-    // this.productService.buyNowCartItemCheck(item).subscribe((res)=> console.log(res))
- 
+  buyNow(items:any){ 
+   this.productService.buyNowCartItemCheck(items).subscribe((res)=> console.log(res)) 
   }
 
   ngOnDestory(){

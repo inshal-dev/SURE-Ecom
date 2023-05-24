@@ -11,6 +11,9 @@ $card-background: #146C94;
 body{
     font-family: 'Varela Round', sans-serif;
     background-color: $background-color;
+    .btn{
+        border-radius: 20px;
+    }
 }
 
 

@@ -7,8 +7,9 @@
     border-radius: 10px;
 }
 
+
 .card-address{
-    width: 300px;
+    width: 350px;
     height: 160px;
 }
 
@@ -26,14 +27,42 @@
     cursor: pointer;
     margin:5px 0px;  
 }
+
+.form-control, .form-select{
+    border-radius: 20px;
+}
+
+.form-section{
+    margin: auto;
+    width: 50%;
+}
  
 .edit{
     position: absolute;
-    bottom: 13px; 
+    bottom: 10px; 
+    left: 18px;
     text-decoration: none;
-
+    cursor: pointer;
+    padding: 0;
 }
 
 #icon-pen{
     margin-bottom: 5px; 
+}
+
+.btn{
+    border-radius: 20px;
+}
+
+.head{
+    display:  flex;
+    margin-top: 15px;
+    .head-text{
+        flex: 1;
+        padding-left: 10px;
+    }
+    .button-address{
+        align-items: center;
+        width: 200px;
+    }
 }

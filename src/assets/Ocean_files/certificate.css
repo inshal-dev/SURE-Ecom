@@ -1,0 +1,137 @@
+@font-face {
+    font-family: Ubuntu_Regular;
+    src: url('../fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu_Medium;
+    src: url('../fonts/Ubuntu-Medium.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu_Bold;
+    src: url('../fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu_Light;
+    src: url('../fonts/Ubuntu-Light.ttf');
+}
+
+.cer-container {
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+    font: 1rem 'Ubuntu_Regular', sans-serif;
+    border: 1px solid #210D3E;
+    height: 515px;
+}
+
+.cer-bg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.cer-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+    .cer-content .content-left {
+        width: 40%;
+    }
+
+    .cer-content table {
+        width: 100%;
+        color: #000;
+    }
+
+    .cer-content .content-right {
+        width: 60%;
+    }
+
+    .cer-content .role {
+        color: #12ABDB;
+        font: 1rem 'Ubuntu_Medium', sans-serif;
+        margin-bottom: 0.2rem;
+        margin-top: 0.5rem;
+    }
+
+    .cer-content .fy {
+        font-size: .8rem;
+    }
+
+    .cer-content .level-logo-wrap {
+        width: 6.2rem;
+        margin: 0 auto;
+        padding-top: 1rem;
+    }
+
+        .cer-content .level-logo-wrap img {
+            width: 100%;
+        }
+
+    .cer-content .user-name {
+        font: 1.6rem 'Ubuntu_Medium', sans-serif;
+        color: #210D3E;
+    }
+
+.static-header1 {
+    font: 1.3rem 'Ubuntu_Medium', sans-serif;
+    color: #210D3E;
+    margin-top: 1rem;
+}
+
+.static-header2 {
+    font: 1.4rem 'Ubuntu_Medium', sans-serif;
+    color: #12ABDB;
+    margin-top: 1rem;
+}
+
+.static-header3 {
+    font: 1rem 'Ubuntu_Medium', sans-serif;
+    color: #12ABDB;
+    margin-top: 1rem;
+}
+
+.cer-content .autority-dtl-wrap {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .cer-content .autority-dtl-wrap li span {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 45%;
+    }
+
+        .cer-content .autority-dtl-wrap li span:first-child {
+            margin-right: 1rem;
+        }
+
+        .cer-content .autority-dtl-wrap li span:last-child {
+            margin-left: 1rem;
+        }
+
+    .cer-content .autority-dtl-wrap li:first-child img {
+        width: 8rem;
+    }
+
+    .cer-content .autority-dtl-wrap li:first-child span {
+        border-bottom: 1px solid #999;
+    }
+
+    .cer-content .autority-dtl-wrap li:nth-child(2) {
+        padding: 1rem 0;
+        font: 1rem 'Ubuntu_Medium', sans-serif;
+    }
+
+    .cer-content .autority-dtl-wrap li:last-child {
+        color: #12ABDB;
+        font: 0.7rem 'Ubuntu_Regular', sans-serif;
+    }

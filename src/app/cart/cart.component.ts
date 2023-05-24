@@ -14,6 +14,8 @@ export class CartComponent {
   discountAmount:number = 0;
   discount:number = 0;
 
+  productCartItem:any = [];
+
   constructor(
     private productService: ProductServiceService
   ){
@@ -38,13 +40,24 @@ export class CartComponent {
     if(event.target.checked){
       this.totalValue += this.getDiscount(items) * items.productQuantity  
       this.discountAmount += this.discount * items.productQuantity 
+      items.productPriceDis = this.totalValue 
+      this.productCartItem.push(items)
       return this.totalValue  
     }else{
-      this.totalValue -= this.getDiscount(items) * items.productQuantity 
+      this.totalValue -= this.getDiscount(items) * items.productQuantity  
+      this.discountAmount -= this.discount * items.productQuantity 
+      this.productCartItem.splice(this.productCartItem.indexOf(items), 1 );
+      console.log(this.productCartItem);
       
-      this.discountAmount -= this.discount * items.productQuantity
       return this.totalValue
-    } 
+    }  
+  }
+
+  sendProduct(){
+    if(this.productCartItem){
+      this.productService.userProductList(this.productCartItem).subscribe(res => console.log(res)
+      ); 
+    }
   }
 
   getDiscount(item:any){
@@ -69,3 +82,5 @@ export class CartComponent {
     
   }
 }
+
+

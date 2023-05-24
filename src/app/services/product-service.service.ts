@@ -34,4 +34,12 @@ export class ProductServiceService {
   buyNowCartItemCheck(item:any){
     return this.http.post(this.url + 'buy-now', {item: item})
   }
+   
+  userProductList(data:any){ 
+    return this.http.post(this.url + 'cart-data', {productData : data}) 
+  }
+
+
+   
+
 }
