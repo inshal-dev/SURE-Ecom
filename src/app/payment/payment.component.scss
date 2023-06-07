@@ -1,0 +1,91 @@
+@import '../../styles.scss';
+
+.jumbotron{
+    margin: 100px auto;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.form-control{
+    border-radius: 20px;
+}
+
+.card-text{
+    margin: 3px;
+    font-weight: lighter;
+}
+.accordion-item{
+    border: 0.2px solid rgb(223, 223, 223); 
+    border-radius: 10px;
+}
+.accordion-header{
+    border: 0.2px solid rgb(223, 223, 223); 
+    border-radius: 7px;
+    background-color: $background-color-nav;
+    color: $background-color;
+}
+
+.date{
+    width:150px;
+    border: 0.2px solid rgb(223, 223, 223); 
+    padding: 5px;
+}
+
+.cvv{
+    width: 80px;
+    height: 40px;
+    border: 0.2px solid rgb(223, 223, 223);  
+    padding: 5px;
+    text-align: center;
+}
+
+.cvv::placeholder{
+    text-align: center;
+}
+
+.input-groups input{
+    float:left;
+}
+
+.btn-vpa{
+    clear:left
+}
+
+.credit-cards{
+    margin: auto;
+    width: 400px;
+}
+
+.btn-pay{
+    margin-top: 20px;
+    width: 100px;
+    color: white;
+    background-color: $background-color-nav;
+}
+
+.card-number::placeholder{
+    text-align: center;
+    font-size: larger;
+}
+.card-number{
+    text-align: center;
+}
+.btn-final-buy{
+    width: 200px;
+    color: white;
+    background-color: $background-color-nav;
+}
+
+.card{
+    width: 250px;
+    height: 80px;
+    padding: 10px;
+}
+
+.form-check{
+    display: inline-block;
+    .input-check{
+        margin-right: 10px;
+    }
+}

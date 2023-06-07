@@ -24,13 +24,13 @@
                   </div>
                   <div class="btn-cart-inc">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-increment" (click)="addCart(product)"  *ngIf="productCartQuantity >=1">
+                      <button type="button" class="btn btn-increment" (click)="addCart(product)" appHoverUp  *ngIf="productCartQuantity >=1">
                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                             </svg>
                       </button>
                       <button class="btn btn-cart"  (click)="addCart(product)">{{ productCartQuantity >= 1 ? productCartQuantity : 'Add to Cart' }}</button>
-                      <button type="button" class="btn btn-decrement" (click)="removeCart(product.product_id)" *ngIf="productCartQuantity >=1" >
+                      <button type="button" class="btn btn-decrement" (click)="removeCart(product.product_id)" appHoverUp *ngIf="productCartQuantity >=1" >
                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                             </svg>
@@ -63,13 +63,13 @@
                           <span>-{{item.productDiscount}}%</span>
                         </div>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-increment btn-product-inc" (click)="addCart(item)"  *ngIf="cartItem[i]?.product_id === item?.product_id">
+                          <button type="button" class="btn btn-increment btn-product-inc" (click)="addCart(item)" appHoverUp  *ngIf="cartItem[i]?.product_id === item?.product_id">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                 </svg>
                           </button>
                           <button class="btn btn-cart"  (click)="addCart(item)">{{cartItem[i]?.product_id !== item?.product_id ? 'Add to Cart' : cartItem[i]?.productQuantity }}</button>
-                          <button type="button" class="btn btn-decrement btn-product-dec" (click)="removeCart(item.product_id)" *ngIf="cartItem[i]?.product_id === item?.product_id" >
+                          <button type="button" class="btn btn-decrement btn-product-dec" (click)="removeCart(item.product_id)" appHoverUp *ngIf="cartItem[i]?.product_id === item?.product_id" >
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                                   <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                 </svg>

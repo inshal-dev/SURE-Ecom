@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddressSectionComponent } from './address-section/address-section.component';
 import { AddressService } from './services/address.service';
 import { ProductServiceService } from './services/product-service.service';
+import { PaymentComponent } from './payment/payment.component';
+import { HoverUpDirective } from './hover-up.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'; 
 
 @NgModule({
   declarations: [
@@ -27,14 +30,17 @@ import { ProductServiceService } from './services/product-service.service';
     ProductComponent,
     ProductDetailComponent,
     SearchFilterPipe,
-    AddressSectionComponent
+    AddressSectionComponent,
+    PaymentComponent,
+    HoverUpDirective,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
   ],
   providers: [
     AddressService,

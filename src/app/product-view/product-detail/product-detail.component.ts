@@ -27,9 +27,9 @@ export class ProductDetailComponent {
     "../../../assets/assets/xyz2.jpg",
     "../../../assets/assets/titan 1.svg",
     "../../../assets/assets/xyz3.jpg",
-    "../../../assets/assets/xyz4.jpg",
-    
+    "../../../assets/assets/xyz4.jpg", 
   ]
+
   constructor(
     private _activatedRoute: ActivatedRoute,
     private productService: ProductServiceService,
@@ -47,8 +47,7 @@ export class ProductDetailComponent {
         this.productList.forEach((element:any)=> {
            if(element.product_id == this.getId ) return this.product = element;
         });
-      }
-    )  
+      })  
   }
 
  getIdbyRoute(){ 
@@ -64,8 +63,7 @@ export class ProductDetailComponent {
             return this.productCartQuantity = e.productQuantity
           }
         })
-      }
-    );
+      });
   }
  
   addCart(item:any){

@@ -72,21 +72,13 @@
 }
 
 //search
- 
-
-// .btn-search{
-//     width: 5%;
-//     background-color: white;
-//     color: $background-color; 
-// }
-
-.search-section{
-    width: 450px;
-    margin-left:65%;
-    .form-control{
-        border-radius: 20px;
-    }
+.input-search{
+    width: 550px;
+    margin-left:55%;
+    border-radius: 20px;
 }
+
+ 
 
 input:focus, :target{
     background-color: white;
@@ -99,3 +91,16 @@ input::placeholder{
 .btn-group{
     border: 1px solid $card-background;
  }
+
+ 
+
+ .form-check-input-color{
+    margin: 10px; 
+    width: 16px;
+    height: 16px;
+ }
+
+ .form-check-label{
+    margin-bottom: 10px;
+ }
+ 
