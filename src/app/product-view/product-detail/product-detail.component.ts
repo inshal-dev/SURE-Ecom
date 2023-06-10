@@ -28,18 +28,22 @@ export class ProductDetailComponent {
     "../../../assets/assets/titan 1.svg",
     "../../../assets/assets/xyz3.jpg",
     "../../../assets/assets/xyz4.jpg",
-    
+
   ]
   constructor(
     private _activatedRoute: ActivatedRoute,
     private productService: ProductServiceService,
     private route: Router
   ){
-  
+
     this.getIdbyRoute()
     this.getProductByID()
     this.getCartList()
   }
+
+  ngOnInit(): void {
+    window.scroll(0,0)
+}
   getProductByID(){
      this.productSubscription = this.productService.getProducts().subscribe(
       (res)=>{
@@ -48,26 +52,26 @@ export class ProductDetailComponent {
            if(element.product_id == this.getId ) return this.product = element;
         });
       }
-    )  
+    )
   }
 
- getIdbyRoute(){ 
+ getIdbyRoute(){
   this.getId = this._activatedRoute.snapshot.paramMap.get("id")
  }
 
   getCartList(){
     this.cart = this.productService.getCartList().subscribe(
       res => {
-         this.cartItem = res 
+         this.cartItem = res
         this.cartItem.forEach((e:any)=>{
-          if(e.product_id === this.getId){ 
+          if(e.product_id === this.getId){
             return this.productCartQuantity = e.productQuantity
           }
         })
       }
     );
   }
- 
+
   addCart(item:any){
     this.cartList = this.productService.addCartItem(item).subscribe(res =>console.log(res))
     this.getProductByID()
@@ -78,7 +82,7 @@ export class ProductDetailComponent {
     this.getProductByID()
     this.getCartList()
   }
- 
+
   routeToID(id:any){
     this.getId = id
     this.getProductByID()
@@ -86,8 +90,8 @@ export class ProductDetailComponent {
     window.scroll(0,0)
   }
 
-  buyNow(items:any){ 
-   this.productService.buyNowCartItemCheck(items).subscribe((res)=> console.log(res)) 
+  buyNow(items:any){
+   this.productService.buyNowCartItemCheck(items).subscribe((res)=> console.log(res))
   }
 
   ngOnDestory(){
