@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
@@ -9,6 +9,8 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class NavBarComponent implements OnInit {
   
+ @Output() item = new EventEmitter<any>; 
+
   cartLen!:number;
   
   constructor(private productService: ProductServiceService){
@@ -25,4 +27,9 @@ export class NavBarComponent implements OnInit {
       this.cartLen = data.length; 
     })
   }
+ 
+  setRouteValue(routeName:any){
+    this.item.emit(routeName)
+  }
+   
 }

@@ -7,7 +7,7 @@
         <div class="head">
           <div class="display-6 pl-2 head-text ">Select Address</div>
            <div class="button-address text-center" *ngIf="address">
-            <button class="btn btn-outline-primary"  (click)="address = false">Add New Address</button>
+            <button class="btn add-address"  (click)="address = false">Add New Address</button>
           </div>  
         </div>
         <div class="row p-3" >    
@@ -27,7 +27,8 @@
                               </div> 
                               <div class="col-md-2">
                                 <div class="form-check d-flex justify-content-center">
-                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="checkValue($event, item)" >              
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="checkValue($event, item, i)"  >              
+
                                 </div>
                                   <div class="delete-cart-item d-flex justify-content-center">
                                    <a class="btn btn-bin" (click)="rmAddress(item.id)">
@@ -68,7 +69,7 @@
               </div>
               <div class="btn-address">
                 <button class="btn btn-outline-danger float-left" (click)="address = true">Cancel</button>
-                <button class="btn btn-primary float-end" (click)="addNewAddress()" [disabled]="addressForm.invalid">Add address</button>
+                <button class="btn add-address float-end" (click)="addNewAddress()" [disabled]="addressForm.invalid">Add address</button>
               </div>
             </div> 
         </div> 
@@ -102,14 +103,14 @@
             </div>
             <div class="btn-address">
               <button class="btn btn-outline-danger float-left" (click)="address = true">Cancel</button>
-              <button class="btn btn-primary float-end" (click)="edit_Address()" >Update address</button>
+              <button class="btn update-address float-end" (click)="edit_Address()" >Update address</button>
             </div>
           </div> 
       </div> 
         <hr>
 
         <div class="button-next m-3 d-flex justify-content-end" >
-          <button class="btn btn-primary" [disabled]="check" (click)="sendAddress()"> 
+          <button class="btn next-btn" [disabled]="check" (click)="sendAddress()"> 
             Next
           </button>
         </div>

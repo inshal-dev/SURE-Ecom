@@ -41,14 +41,15 @@ export class CartComponent {
       this.totalValue += this.getDiscount(items) * items.productQuantity  
       this.discountAmount += this.discount * items.productQuantity 
       items.productPriceDis = this.totalValue 
+      console.log(items);
+      
       this.productCartItem.push(items)
       return this.totalValue  
     }else{
       this.totalValue -= this.getDiscount(items) * items.productQuantity  
       this.discountAmount -= this.discount * items.productQuantity 
       this.productCartItem.splice(this.productCartItem.indexOf(items), 1 );
-      console.log(this.productCartItem);
-      
+      console.log(this.productCartItem); 
       return this.totalValue
     }  
   }
@@ -64,10 +65,10 @@ export class CartComponent {
    this.discount = item.productDiscount/ 100
     this.discount = this.discount * item.productPrice  
     let discountPrice = item.productPrice - this.discount 
-    
     return discountPrice 
   }
 
+  
   deleteCartItem(items:any){
     this.productService.deleteCartItemFromList(items.product_id).subscribe((res)=> console.log(res))
     this.getCartLists()
@@ -78,9 +79,8 @@ export class CartComponent {
     }else{
       return this.totalValue = 0
     }
-  
-    
   }
+
 }
 
 

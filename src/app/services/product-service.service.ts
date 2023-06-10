@@ -40,6 +40,11 @@ export class ProductServiceService {
   }
 
 
-   
+  getFinalCart(){
+    return this.http.get(this.url + 'viewCart')
+  }
+  buyProduct(item:any){
+    return this.http.post(this.url + 'payment-option', {type: item})
+  }
 
 }

@@ -31,6 +31,6 @@ export class AddressService {
   }
   
   userAddressList(data:any){
-    return this.http.post(this.url + 'cart-data', { addressData: data })
+    return this.http.post(this.url + 'selected-address', { addressData: data })
   }
 }

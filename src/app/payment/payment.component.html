@@ -1,0 +1,124 @@
+<div class="container"> 
+    <app-nav-bar></app-nav-bar> 
+</div>
+<div class="container">
+    <div class="jumbotron "> 
+        <div class="row">
+            <div class="col"> 
+                <h4>Cart Value</h4>  
+                <h2 *ngIf="data?.productData.length <= 1">Amount: 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                        <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                    </svg><s>{{data?.productData[0].productPrice * data?.productData[0].productQuantity | number}}</s> {{amount | number }} (-{{data?.productData[0].productDiscount}}%)
+                   </h2>
+                   <h2 *ngIf="data?.productData.length > 1">Amount: 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                        <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                    </svg><s > {{totalAmount | number}} </s> {{amount | number }} (-{{data?.productData[0].productDiscount + data.productData[1].productDiscount}}%)*
+                   </h2>
+                   <h4 >Saved: {{amount - totalAmount| number}}  </h4>
+                   <small *ngIf="data?.productData.length > 1">
+                    *Both product discount merged
+                  </small>
+                   <hr>
+                  <h4>Selected Address</h4> 
+                  <div class="card">
+                    <p class="card-title">{{data.add[0]?.firstLine}}, {{data.add[0]?.secondLine}}</p> 
+                    <p class="pb-2 h5">{{data?.add[0]?.state}}-{{data.add[0]?.pincode}}</p>  
+                  </div>           
+            </div> 
+            <div class="col-6">
+               <h4>Payment Option</h4> 
+                <div class="accordion-item"> 
+                    <h2 class="accordion-header p-3">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Pay Using UPI
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse mt-3 p-3" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                    <label for="vpa">Enter VPA ID</label>   
+                    <input type="text" class="form-control" id="vpa" >
+                    <div class="btn-vpa text-end mt-1">
+                        <button class="btn btn-success" (click)="getPaymentOption('UPI')">
+                            Verify
+                        </button>
+                    </div> 
+                      </div> 
+                  </div>
+              </div>
+               
+              <div class="accordion-item"> 
+                <h2 class="accordion-header p-3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#internet" aria-expanded="false" aria-controls="internet">
+                  Internet Banking
+                  </button>
+                </h2>
+                <div id="internet" class="accordion-collapse collapse mt-3 p-3" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p class="mb-2">Select Bank</p>    
+                <div class="form-check" *ngFor="let bank of bankList">
+                  <div class="input-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="bank.checked" id="flexCheckDefault" >
+                    <label class="form-check-label" for="flexCheckDefault">
+                      {{bank.name}}
+                    </label>
+                  </div>
+                 
+                </div> 
+                <div class="btn-vpa text-end">
+                  <button class="btn btn-pay" (click)="getPaymentOption(bankList)">
+                     Pay
+                  </button>
+              </div> 
+              </div> 
+              </div>
+          </div>
+        <div class="accordion-item"> 
+            <h2 class="accordion-header p-3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#card" aria-expanded="false" aria-controls="card">
+              Credit/Debit Card
+              </button>
+            </h2>
+            <div id="card" class="accordion-collapse collapse mt-3 p-3" data-bs-parent="#accordionExample">
+              <div class="accordion-body credit-cards ">
+                <p class="text-center">Enter Card details</p>
+                <input id="ccn" type="number" class="form-control m-2 card-number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+                <div class="input-groups">
+                    <input type="month" class="form-control p-2 date m-2" >
+                    <input type="password" name="" id="" class="form-control cvv m-2" placeholder="cvv">
+                    
+                </div>
+                
+                <div class="btn-vpa mt-5 text-center">
+                <button class="btn btn-pay" (click)="getPaymentOption('Card')">
+                   Pay
+                </button>
+            </div> 
+            </div> 
+          </div>
+        </div>
+        <div class="accordion-item"> 
+            <h2 class="accordion-header p-3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pay" aria-expanded="false" aria-controls="pay">
+             Pay On Delivery
+              </button>
+            </h2>
+            <div id="pay" class="accordion-collapse collapse mt-3 p-3" data-bs-parent="#accordionExample">
+              <div class="accordion-body">  
+                <p>Pay once the item is delivered</p>
+                <div class="btn-float text-end">
+                  <button class="btn btn-pay" (click)="getPaymentOption('COD')">
+                    Pay
+                 </button> 
+                </div>
+           
+            </div> 
+          </div>
+        </div>
+            </div> 
+        </div> 
+    </div>
+</div> 
+
+ 

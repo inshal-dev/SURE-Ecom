@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { isEmpty, Observable, Subscription, of } from 'rxjs';
 import { AddressService } from '../services/address.service';
 
@@ -30,10 +31,13 @@ export class AddressSectionComponent {
   check:boolean = true;
   stateListedit: any;
   addressCart:any;
+  
+  index!:number;
 
  constructor(
   private addressService: AddressService,
-  private ref: ChangeDetectorRef
+  private ref: ChangeDetectorRef,
+  private route: Router
  ){
   this.getAddressList()
   this.getCities() 
@@ -77,10 +81,12 @@ export class AddressSectionComponent {
   
  }
  
-  checkValue(event:any, item:any){
+  checkValue(event:any, item:any, i:number){
     if(event.target.checked){
       this.check = false
       this.addressCart = item
+      this.index = i
+      
     }else{
       this.check = true
       this.addressCart = ''
@@ -94,8 +100,7 @@ export class AddressSectionComponent {
 
   updateAddress(item:any){
     this.address = true
-    this.editAddress = item; 
-   
+    this.editAddress = item;  
     console.log(this.stateList);
   }
   edit_Address(){
@@ -105,6 +110,7 @@ export class AddressSectionComponent {
 
  sendAddress(){
   this.addressService.userAddressList(this.addressCart).subscribe(res => console.log(res))
+  this.route.navigate(['payment'])
  }
 
   ngOnDestory(){
