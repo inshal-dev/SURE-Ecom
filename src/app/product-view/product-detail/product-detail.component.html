@@ -1,5 +1,5 @@
 <div class="container">
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar [cartLen]="cartLength"></app-nav-bar>
 </div>
 <div class="container watch-detail-section">
     <div class="jumbotron" >
@@ -17,7 +17,7 @@
                 <h2>{{product?.productName}}</h2>
                 <h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
                     <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
-                  </svg>{{product?.productPrice | number}} <span id="discount" *ngIf="product?.productDiscount !== ''"> -{{product?.productDiscount}}%</span></h3> 
+                  </svg>{{product?.productPrice | number}} <span id="discount" *ngIf="product?.productDiscount !== ''"> -{{product?.productDiscount}}%</span></h3>
                   <hr>
                   <div class="text-description">
                     {{product?.productDescription}}
@@ -35,22 +35,22 @@
                               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                             </svg>
                       </button>
-                    </div>  
+                    </div>
                     <button class="btn btn-buy btn-right" (click)="buyNow(product)" [routerLink]="['/cart']">Buy Now</button>
 
                   </div>
-                  
- 
+
+
             </div>
             </ng-container>
         </div>
         <hr>
         <h3 class="text-center">Similar Watches</h3>
         <div class="card-section mt-4">
-            <div class="row">  
+            <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-12 mb-4" *ngFor="let item of productList; let i=index "  >
                   <ng-container *ngIf="i <= 3">
-                  <div class="card text-bg-light"> 
+                  <div class="card text-bg-light">
                       <img src="{{productImages[i]}}" class="img-fluid product-image p-1" alt="...">
                       <a class="h4 card-title" style="text-decoration: none; cursor: pointer;">{{item.productName}}</a>
                       <div class="card-body">
@@ -58,7 +58,7 @@
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
                                   <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
                                 </svg>{{item.productPrice | number}}</h3>
-                        <p>{{item.productDescription}}</p> 
+                        <p>{{item.productDescription}}</p>
                         <div class="discount-section" *ngIf="item.productDiscount">
                           <span>-{{item.productDiscount}}%</span>
                         </div>
@@ -79,7 +79,7 @@
                       </div>
                     </div>
                   </ng-container>
-              </div>  
+              </div>
             </div>
         </div>
     </div>

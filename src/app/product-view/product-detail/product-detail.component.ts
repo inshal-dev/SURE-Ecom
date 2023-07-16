@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Product } from 'src/app/interfaces/product';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 export class ProductDetailComponent {
   getId:any;
   product:any;
-  productList:any;
+  productList!:Array<Product>;
   productSubscription!:Subscription;
   productCartQuantity:any
 
@@ -27,15 +28,16 @@ export class ProductDetailComponent {
     "../../../assets/assets/xyz2.jpg",
     "../../../assets/assets/titan 1.svg",
     "../../../assets/assets/xyz3.jpg",
-    "../../../assets/assets/xyz4.jpg", 
+    "../../../assets/assets/xyz4.jpg",
   ]
+  cartLength!: string;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private productService: ProductServiceService,
     private route: Router
   ){
-  
+
     this.getIdbyRoute()
     this.getProductByID()
     this.getCartList()
@@ -47,25 +49,26 @@ export class ProductDetailComponent {
         this.productList.forEach((element:any)=> {
            if(element.product_id == this.getId ) return this.product = element;
         });
-      })  
+      })
   }
 
- getIdbyRoute(){ 
+ getIdbyRoute(){
   this.getId = this._activatedRoute.snapshot.paramMap.get("id")
  }
 
   getCartList(){
     this.cart = this.productService.getCartList().subscribe(
       res => {
-         this.cartItem = res 
+         this.cartItem = res
+         this.cartLength = this.cartItem.length
         this.cartItem.forEach((e:any)=>{
-          if(e.product_id === this.getId){ 
+          if(e.product_id === this.getId){
             return this.productCartQuantity = e.productQuantity
           }
         })
       });
   }
- 
+
   addCart(item:any){
     this.cartList = this.productService.addCartItem(item).subscribe(res =>console.log(res))
     this.getProductByID()
@@ -76,7 +79,7 @@ export class ProductDetailComponent {
     this.getProductByID()
     this.getCartList()
   }
- 
+
   routeToID(id:any){
     this.getId = id
     this.getProductByID()
@@ -84,8 +87,8 @@ export class ProductDetailComponent {
     window.scroll(0,0)
   }
 
-  buyNow(items:any){ 
-   this.productService.buyNowCartItemCheck(items).subscribe((res)=> console.log(res)) 
+  buyNow(items:any){
+   this.productService.buyNowCartItemCheck(items).subscribe((res)=> console.log(res))
   }
 
   ngOnDestory(){

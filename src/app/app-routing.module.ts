@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddressSectionComponent } from './address-section/address-section.component';
 import { CartComponent } from './cart/cart.component';
-import { HomeComponent } from './home/home/home.component'; 
+import { HomeComponent } from './home/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ProductDetailComponent } from './product-view/product-detail/product-detail.component';
 import { ProductComponent } from './product-view/product/product.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
+let category = '';
 const routes: Routes = [
   {
-    path:'', 
+    path:'',
     component:HomeComponent,
     title:'Sure'
   },
@@ -18,17 +20,18 @@ const routes: Routes = [
     path:'cart', component:CartComponent
   },
   {
-    path:'products/:watch', 
+    path:'products/:watch',
     component: ProductComponent,
-    title: 'Watches', 
+    title: 'Watches',
+    pathMatch: 'full'
   },
   {
-    path:'product-detail/:id', 
+    path:'product-detail/:id',
     component: ProductDetailComponent,
     title: 'Sure'
   },
   {
-    path:'address', 
+    path:'address',
     component: AddressSectionComponent,
     title: 'Sure'
   },
@@ -38,10 +41,15 @@ const routes: Routes = [
     title: 'Payment Gateway'
   },
   {
+    path:'order-history',
+    component: OrderHistoryComponent,
+    title: 'Order history'
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
     title: '404'
-  } 
+  },
 ];
 
 @NgModule({

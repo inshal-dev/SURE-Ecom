@@ -16,11 +16,11 @@
     font-weight: lighter;
 }
 .accordion-item{
-    border: 0.2px solid rgb(223, 223, 223); 
+    border: 0.2px solid rgb(223, 223, 223);
     border-radius: 10px;
 }
 .accordion-header{
-    border: 0.2px solid rgb(223, 223, 223); 
+    border: 0.2px solid rgb(223, 223, 223);
     border-radius: 7px;
     background-color: $background-color-nav;
     color: $background-color;
@@ -28,14 +28,14 @@
 
 .date{
     width:150px;
-    border: 0.2px solid rgb(223, 223, 223); 
+    border: 0.2px solid rgb(223, 223, 223);
     padding: 5px;
 }
 
 .cvv{
     width: 80px;
     height: 40px;
-    border: 0.2px solid rgb(223, 223, 223);  
+    border: 0.2px solid rgb(223, 223, 223);
     padding: 5px;
     text-align: center;
 }
@@ -81,6 +81,8 @@
     width: 250px;
     height: 80px;
     padding: 10px;
+    border: none;
+    box-shadow: 1px 2px 20px rgba(77, 77, 77, 0.284);
 }
 
 .form-check{

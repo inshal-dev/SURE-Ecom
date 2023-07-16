@@ -1,5 +1,5 @@
  @import '/src/styles.scss';
- 
+
 .watch-detail-section{
     margin: 150px auto;
     padding: 20px;
@@ -9,14 +9,16 @@
 
 //card section
 
- 
+
 .card{
-    width: 300px; 
-    padding: 0; 
+    width: 300px;
+    padding: 0;
     border-radius: 10px;
+    border: none;
+    box-shadow: 1px 2px 20px rgba(77, 77, 77, 0.284);
     .card-body{
         padding: 10px 16px 16px 16px;
-    }  
+    }
 }
 .btn-right{
     float: right;
@@ -26,17 +28,17 @@
     color: red;
     margin-top: -10px;
 }
- 
+
 .discount-section{
     background-color: rgb(255, 42, 0);
     border-radius: 50%;
     width: 55px;
-    height: 55px;  
+    height: 55px;
     position: absolute;
     top: 48%;
-    right: 8px; 
+    right: 8px;
     display: flex; /* or inline-flex */
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 .card-title{
@@ -52,7 +54,7 @@
     }
  }
  .btn-product-view{
-    width: 8rem; 
+    width: 8rem;
  }
 #btn{
     width: 8rem;
@@ -61,7 +63,7 @@
  .btn-group{
     border: 1px solid $card-background;
  }
- 
+
  .btn-cart:hover, :focus, :target{
     color: white;
     background-color: $card-background;
@@ -78,7 +80,7 @@
     margin: 0;
 }
 
-.product-image{ 
+.product-image{
     height: 290px;
     border-radius: 10px 10px 0px 0px;
 }

@@ -18,7 +18,9 @@ import { AddressService } from './services/address.service';
 import { ProductServiceService } from './services/product-service.service';
 import { PaymentComponent } from './payment/payment.component';
 import { HoverUpDirective } from './hover-up.directive';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'; 
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterNavComponent } from './home/footer-nav/footer-nav.component';
+import { OrderHistoryComponent } from './order-history/order-history.component'; 
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PaymentComponent,
     HoverUpDirective,
     PageNotFoundComponent,
+    FooterNavComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,

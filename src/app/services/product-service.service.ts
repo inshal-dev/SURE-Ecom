@@ -34,9 +34,9 @@ export class ProductServiceService {
   buyNowCartItemCheck(item:any){
     return this.http.post(this.url + 'buy-now', {item: item})
   }
-   
-  userProductList(data:any){ 
-    return this.http.post(this.url + 'cart-data', {productData : data}) 
+
+  userProductList(data:any){
+    return this.http.post(this.url + 'cart-data', {productData : data})
   }
 
 
@@ -47,4 +47,7 @@ export class ProductServiceService {
     return this.http.post(this.url + 'payment-option', {type: item})
   }
 
+  orderHistory(){
+    return this.http.get(this.url + 'placedItem');
+  }
 }

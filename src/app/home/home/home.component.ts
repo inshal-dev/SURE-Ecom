@@ -6,13 +6,14 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent { 
-  
+export class HomeComponent {
+
   $products!:Observable<any>;
   cartList!: Subscription;
   cart!:Subscription;
   cartItem:any
   cartDec!:Subscription;
+  cartLength!:string;
 
   productImages:Array<string> = [
     "../../../assets/assets/fossil.jpg",
@@ -21,7 +22,7 @@ export class HomeComponent {
     "../../../assets/assets/titan 1.svg",
     "../../../assets/assets/xyz3.jpg",
     "../../../assets/assets/xyz4.jpg",
-    
+
   ]
 
   constructor(
@@ -34,12 +35,15 @@ export class HomeComponent {
 
   getProductList(){
     this.$products = this.productService.getProducts();
+    this.$products.subscribe((res)=> console.log(res)
+    )
   }
 
   getCartList(){
     this.cart = this.productService.getCartList().subscribe(
       res => {
-        this.cartItem = res 
+        this.cartItem = res
+        this.cartLength = this.cartItem.length
       }
     );
   }
@@ -52,13 +56,13 @@ export class HomeComponent {
     this.cartDec = this.productService.deleteCartSpecificItem(id).subscribe(res => console.log(res));
     this.getCartList();
   }
- 
+
   ngOndestory(){
     this.cartList.unsubscribe()
     this.cartDec.unsubscribe()
     this.cart.unsubscribe()
   }
 
-  
+
 
 }

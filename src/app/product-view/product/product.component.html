@@ -1,11 +1,11 @@
 <div class="container">
-    <app-nav-bar (item)="routeValue($event)"></app-nav-bar>
-</div> 
+    <app-nav-bar [cartLen]="cartLength" (item)="routeValue($event)" ></app-nav-bar>
+</div>
 <div class="container product-card-section">
-    <div class="jumbotron products">   
+    <div class="jumbotron products">
           <div class="d-flex mb-3" role="search">
             <h4>{{category | titlecase}}</h4>
-           <input class="form-control input-search" type="search" placeholder="Search..." [(ngModel)]="searchTerm"  > 
+           <input class="form-control input-search" type="search" placeholder="Search..." [(ngModel)]="searchTerm"  >
            <div class="dropdown dropstart">
             <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
@@ -14,24 +14,24 @@
             </button>
             <ul class="dropdown-menu">
               <h5 class="dropdown-item text-start">Color</h5>
-              <li *ngFor="let color of productColor">  
+              <li *ngFor="let color of productColor">
                 <div class="form-check text-start">
                   <input class="form-check-input-color" type="checkbox"  [value]="color.color" (change)="getProductByColor($event, color.color); color.checked == !color.checked" id="flexCheckDefault">
-                  
+
                   <label class="form-check-label" for="flexCheckDefault">
-                  
+
                    <span>  {{color.color}}</span>
                   </label>
-                </div> 
-              </li> 
+                </div>
+              </li>
             </ul>
           </div>
           </div>
-              
+
         <div class="row">
           <ng-container *ngIf="category == '';else watch ">
             <div class="col-lg-3 col-md-4 col-sm-12 mb-4" *ngFor="let item of $productList | searchFilter:searchTerm; let i=index" >
-              <div class="card text-bg-light"> 
+              <div class="card text-bg-light">
                   <img src="{{productImages[i]}}" class="img-fluid product-image p-1" alt="...">
                   <a class="h4 card-title" style="text-decoration: none; background-color: transparent; cursor: pointer; color: black;" [routerLink]="['/product-detail', item.product_id]">{{item.productName}}</a>
                   <div class="card-body">
@@ -39,7 +39,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
                               <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
                             </svg>{{item.productPrice | number}}</h3>
-                    <p>{{item.productDescription}}</p> 
+                    <p>{{item.productDescription}}</p>
                     <div class="discount-section" *ngIf="item.productDiscount">
                       <span>-{{item.productDiscount}}%</span>
                     </div>
@@ -64,13 +64,13 @@
             <div class="text-center">
               <h2>Oops...</h2>
               <h5>No Watches available for this category</h5>
-            </div> 
+            </div>
           </ng-container>
           </ng-container>
-          <ng-template #watch>  
+          <ng-template #watch>
             <ng-container *ngIf="productCategoryList != '';else textView">
               <div class="col-lg-3 col-md-4 col-sm-12 mb-4" *ngFor="let item of productCategoryList | searchFilter:searchTerm; let i=index" >
-                <div class="card text-bg-light"> 
+                <div class="card text-bg-light">
                     <img src="{{productImages[i]}}" class="img-fluid product-image p-1" alt="...">
                     <a class="h4 card-title" style="text-decoration: none; background-color: transparent; cursor: pointer; color: black;" [routerLink]="['/product-detail', item.product_id]">{{item.productName}}</a>
                     <div class="card-body">
@@ -78,7 +78,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
                                 <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
                               </svg>{{item.productPrice | number}}</h3>
-                      <p>{{item.productDescription}}</p> 
+                      <p>{{item.productDescription}}</p>
                       <div class="discount-section" *ngIf="item.productDiscount">
                         <span>-{{item.productDiscount}}%</span>
                       </div>
@@ -105,7 +105,7 @@
             </ng-template>
 
           </ng-template>
-       
+
         </div>
     </div>
 </div>
